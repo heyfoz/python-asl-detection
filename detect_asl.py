@@ -1,3 +1,5 @@
+# Python local app to predict the image class via a live video stream using the keras model
+
 import cv2 # For image processing such as reading, resizing, and manipulation
 import numpy as np # To use numerical operations
 import tensorflow as tf # To use tensorflow operations
