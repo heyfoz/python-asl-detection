@@ -39,10 +39,12 @@ This architecture is trained using a combination of training and validation data
 
 ### Prerequisites
 
-- Python 3.9.x
-- TensorFlow 2.15.0
-- OpenCV (CV2) 4.9.2
-- MediaPipe 0.10.9
+- Python 3.9.x - core programming language
+- TensorFlow 2.15.0 - deep learning framework
+- OpenCV (CV2) 4.9.2 - computer vision library
+- MediaPipe 0.10.9 - detecting and cropping hands
+- MatPlotLib 3.9.0 - plotting training history values
+- Pandas 2.2.2 - formatting plots history table
 
 ### Installation
 
