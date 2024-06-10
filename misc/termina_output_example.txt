@@ -1,0 +1,50 @@
+Example terminal output:
+
+024-06-10 16:00:26.735441: I external/local_tsl/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2024-06-10 16:00:26.804783: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-06-10 16:00:27.875032: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+Found 19500 files belonging to 26 classes.
+Found 1950 files belonging to 26 classes.
+Could not load model from /mnt/mydisk/asl/asl_model-03-0.99_3.keras: File not found: filepath=/mnt/mydisk/asl/asl_model-03-0.99_3.keras. Please ensure the file is an accessible `.keras` zip file.
+Training model from scratch.
+Epoch 1/10
+780/780 ━━━━━━━━━━━━━━━━━━━━ 0s 714ms/step - accuracy: 0.6062 - loss: 1.4266    
+Checkpoint .keras file saved: /mnt/mydisk/asl/asl-detect-test-01-val-acc-0.9477-06-10-2024-16-10.keras
+780/780 ━━━━━━━━━━━━━━━━━━━━ 573s 733ms/step - accuracy: 0.6065 - loss: 1.4258 - val_accuracy: 0.9477 - val_loss: 0.2380
+Epoch 2/10
+780/780 ━━━━━━━━━━━━━━━━━━━━ 0s 707ms/step - accuracy: 0.9065 - loss: 0.3585   
+Checkpoint .keras file saved: /mnt/mydisk/asl/asl-detect-test-02-val-acc-0.9574-06-10-2024-16-19.keras
+780/780 ━━━━━━━━━━━━━━━━━━━━ 566s 725ms/step - accuracy: 0.9065 - loss: 0.3584 - val_accuracy: 0.9574 - val_loss: 0.1841
+Epoch 3/10
+780/780 ━━━━━━━━━━━━━━━━━━━━ 0s 707ms/step - accuracy: 0.9360 - loss: 0.2494   
+Checkpoint .keras file saved: /mnt/mydisk/asl/asl-detect-test-03-val-acc-0.9646-06-10-2024-16-28.keras
+780/780 ━━━━━━━━━━━━━━━━━━━━ 566s 726ms/step - accuracy: 0.9360 - loss: 0.2494 - val_accuracy: 0.9646 - val_loss: 0.1679
+Epoch 4/10
+780/780 ━━━━━━━━━━━━━━━━━━━━ 0s 708ms/step - accuracy: 0.9477 - loss: 0.2030    
+Checkpoint .keras file saved: /mnt/mydisk/asl/asl-detect-test-04-val-acc-0.9636-06-10-2024-16-39.keras
+780/780 ━━━━━━━━━━━━━━━━━━━━ 623s 727ms/step - accuracy: 0.9477 - loss: 0.2030 - val_accuracy: 0.9636 - val_loss: 0.1638
+Epoch 5/10
+780/780 ━━━━━━━━━━━━━━━━━━━━ 0s 708ms/step - accuracy: 0.9563 - loss: 0.1620    
+Checkpoint .keras file saved: /mnt/mydisk/asl/asl-detect-test-05-val-acc-0.9682-06-10-2024-16-49.keras
+780/780 ━━━━━━━━━━━━━━━━━━━━ 622s 727ms/step - accuracy: 0.9563 - loss: 0.1620 - val_accuracy: 0.9682 - val_loss: 0.1620
+Epoch 6/10
+780/780 ━━━━━━━━━━━━━━━━━━━━ 0s 707ms/step - accuracy: 0.9635 - loss: 0.1441    
+Checkpoint .keras file saved: /mnt/mydisk/asl/asl-detect-test-06-val-acc-0.9703-06-10-2024-17-00.keras
+780/780 ━━━━━━━━━━━━━━━━━━━━ 621s 726ms/step - accuracy: 0.9635 - loss: 0.1441 - val_accuracy: 0.9703 - val_loss: 0.1523
+Epoch 7/10
+780/780 ━━━━━━━━━━━━━━━━━━━━ 0s 709ms/step - accuracy: 0.9659 - loss: 0.1265   
+Checkpoint .keras file saved: /mnt/mydisk/asl/asl-detect-test-07-val-acc-0.9718-06-10-2024-17-09.keras
+780/780 ━━━━━━━━━━━━━━━━━━━━ 568s 729ms/step - accuracy: 0.9659 - loss: 0.1266 - val_accuracy: 0.9718 - val_loss: 0.1455
+Epoch 8/10
+780/780 ━━━━━━━━━━━━━━━━━━━━ 0s 740ms/step - accuracy: 0.9688 - loss: 0.1126   
+Checkpoint .keras file saved: /mnt/mydisk/asl/asl-detect-test-08-val-acc-0.9713-06-10-2024-17-19.keras
+780/780 ━━━━━━━━━━━━━━━━━━━━ 592s 759ms/step - accuracy: 0.9688 - loss: 0.1126 - val_accuracy: 0.9713 - val_loss: 0.1469
+Epoch 9/10
+780/780 ━━━━━━━━━━━━━━━━━━━━ 0s 710ms/step - accuracy: 0.9724 - loss: 0.1005   
+Checkpoint .keras file saved: /mnt/mydisk/asl/asl-detect-test-09-val-acc-0.9703-06-10-2024-17-28.keras
+780/780 ━━━━━━━━━━━━━━━━━━━━ 569s 729ms/step - accuracy: 0.9724 - loss: 0.1005 - val_accuracy: 0.9703 - val_loss: 0.1503
+Epoch 10/10
+780/780 ━━━━━━━━━━━━━━━━━━━━ 0s 744ms/step - accuracy: 0.9759 - loss: 0.0855   
+Checkpoint .keras file saved: /mnt/mydisk/asl/asl-detect-test-10-val-acc-0.9728-06-10-2024-17-38.keras
+780/780 ━━━━━━━━━━━━━━━━━━━━ 595s 762ms/step - accuracy: 0.9759 - loss: 0.0855 - val_accuracy: 0.9728 - val_loss: 0.1410
