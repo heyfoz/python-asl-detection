@@ -32,8 +32,10 @@ This architecture is trained using a combination of training and validation data
 
 ## Project Structure
 
-- `training/`: Directory containing subdirectories `A` through `Z`, where training images will be stored.
-- `validation/`: Directory containing subdirectories `A` through `Z`, where validation images will be stored.
+- [training](training): Directory containing subdirectories `A` through `Z`, where training images will be stored.
+- [validatio](/validation): Directory containing subdirectories `A` through `Z`, where validation images will be stored.
+- [preprocessing](/preprocessing): Directory containing preprocessing files used to manipulate data before training.
+- [misc](/misc): Directory cointaining misc utility files and a training terminal output example. 
 
 ## Getting Started
 
