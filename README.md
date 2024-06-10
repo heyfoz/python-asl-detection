@@ -102,6 +102,12 @@ With this data preprocessing approach, I was able to achieve 96% validation accu
 | 9     | 0.9386   | 0.2310 | 0.9674       | 0.1317   |
 | 10    | 0.9396   | 0.2132 | 0.9642       | 0.1159   |
 
+## Model Learning Curves
+
+![Model Learning Curves](/misc/model_learning_curves.png)
+
+The above graph illustrates the learning curves of the ASL alphabet model during training. It shows the training and validation accuracy and loss over epochs, providing insights into the model's performance and convergence.
+
 ## Detecting ASL Alphabet Letters
 To start the live video stream application and detect ASL alphabet letters, run the following command from the project directory:
 ```bash
@@ -113,3 +119,11 @@ Watch a demonstration of the ASL detection system v1 in action on LinkedIn: [ASL
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Conclusion
+
+In this project, we developed a robust ASL alphabet detection and classification system using TensorFlow. Through extensive training and validation processes, the model achieved promising results, as demonstrated by the high validation accuracy of 96%. The architecture of the neural network, along with the incorporation of data augmentation techniques and model checkpoints, contributed to enhancing model generalization and performance.
+
+The comprehensive visualizations, including the plotted graph of learning curves, offer valuable insights into the training progress and performance metrics. These visualizations aid in understanding the model's behavior, identifying potential areas for improvement, and making informed decisions during the training process.
+
+With the live video stream application for detecting ASL alphabet letters, this project showcases the practical application of deep learning in real-time gesture recognition tasks. Moving forward, further refinements and optimizations could be explored to enhance the model's accuracy and efficiency, potentially extending its applications to broader domains within the field of computer vision and human-computer interaction.
