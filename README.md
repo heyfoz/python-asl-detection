@@ -12,7 +12,7 @@ This project involves training a keras image recognition model to predict Americ
 
 ## Neural Network Architecture Overview
 
-This section provides insights into the architecture of the neural network utilized during training. The neural network architecture employed in this project is designed to detect and classify American Sign Language (ASL) gestures. Below is an overview of the key components and layers comprising the neural network:
+This section provides insights into the architecture of the neural network utilized during training. It was designed to detect and classify American Sign Language (ASL) alphabet gestures. Key components:
 
 1. **Input Layer**: The neural network takes as input grayscale images of ASL gestures. Each image is resized to a standard dimension of 200x200 pixels.
 
@@ -28,7 +28,7 @@ This section provides insights into the architecture of the neural network utili
 
 7. **Model Compilation**: The model is compiled using the Adam optimizer and categorical crossentropy loss function, suitable for multi-class classification tasks.
 
-This architecture is trained using a combination of training and validation datasets, with data augmentation techniques applied to enhance model generalization. Throughout training, model checkpoints are saved, allowing for the restoration of training progress and the selection of the best-performing model. Finally, the trained model is saved for future use or deployment.
+This architecture is trained using a combination of training and validation datasets, with data augmentation techniques applied to enhance model generalization. Throughout training, model checkpoints are saved as .keras files, enabling the restoration of training progress and the selection of the best-performing model. Additionally, comprehensive visualizations, including graphs depicting accuracy over epochs and loss over epochs, along with a table summarizing the training data, are rendered to a single PNG file. Finally, the trained model is saved for future use or deployment.
 
 ## Project Structure
 
