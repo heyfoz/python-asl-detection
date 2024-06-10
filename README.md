@@ -1,8 +1,9 @@
 # ASL Detection and TensorFlow Image Classification Model Training Project
 
 <p align="center">
-  <img src="https://github.com/ffm5113/python-asl-detection/blob/main/ASL%20N%20Detection.png" alt="ASL Letter N Detecte">
+  <img src="https://github.com/ffm5113/python-asl-detection/blob/main/misc/ASL%20N%20Detection.png" alt="ASL Letter N Detected">
 </p>
+https://github.com/ffm5113/python-asl-detection/blob/main/misc/ASL%20N%20Detection.png
 
 This project involves training a keras image recognition model to predict American Sign Language (ASL) letters displayed via a video stream. The project consists of three main components:
 
