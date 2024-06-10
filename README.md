@@ -24,7 +24,7 @@ This section provides insights into the architecture of the neural network utili
 
 5. **Output Layer**: The final layer consists of 26 units, representing each letter in the American Sign Language alphabet. A softmax activation function is applied to produce probability distributions over these classes.
 
-6. **Dropout**: Dropout layers are employed after the first convolutional layer and the fully connected layer to mitigate overfitting during training. However, the dropout layer after the fully connected layer is commented out, allowing flexibility for experimentation.
+6. **Dropout**: Dropout layers are employed after the first convolutional layer and the fully connected layer to mitigate overfitting during training.
 
 7. **Model Compilation**: The model is compiled using the Adam optimizer and categorical crossentropy loss function, suitable for multi-class classification tasks.
 
