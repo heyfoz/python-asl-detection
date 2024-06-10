@@ -106,7 +106,7 @@ Using this data preprocessing approach, over 97% validation accuracy and a loss 
 
 ![Model Learning Curves](/misc/model_learning_curves.png)
 
-The above graph illustrates the custom learning curves generated during the training script for the ASL alphabet model. It shows the training and validation accuracy and loss over epochs, providing valuable insights into the model's performance and convergence.
+The above graph illustrates the custom learning curves rendered to model_learning_cruves.png during the training script for the ASL alphabet model. It shows the training and validation accuracy and loss over epochs, providing valuable insights into the model's performance and convergence.
 
 ## Detecting ASL Alphabet Letters
 To start the live video stream application and detect ASL alphabet letters, run the following command from the project directory:
