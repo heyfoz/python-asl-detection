@@ -87,7 +87,7 @@ Or to view the last 10 lines of the nohup.out file:
 tail -n 10 nohup.out
 ```
 
-Using this data preprocessing approach, over 97% validation accuracy and a loss value under .15 were achieved by the end of training. 
+Using this data preprocessing approach, over 97% validation accuracy and a cross-entropy loss value under 0.15 were achieved by the end of training. 
 
 | Epoch | Accuracy | Loss   | Val_Accuracy | Val_Loss |
 |-------|----------|--------|--------------|----------|
