@@ -7,9 +7,9 @@ https://github.com/ffm5113/python-asl-detection/blob/main/misc/ASL%20N%20Detecti
 
 This project involves training a keras image recognition model to predict American Sign Language (ASL) letters displayed via a video stream. The project consists of three main components:
 
-1. [mediapipe_preprocess.py](/preprocessing/mediapip_preprocess.py): A script to preprocess images to have a black background, hand centered on the screen in a consistent format.
+1. [mediapipe_preprocess.py](/preprocessing/mediapipe_preprocess.py): A script to preprocess images to have a black background, hand centered on the screen in a consistent format.
 2. [train_asl.py](train_asl.py): A script to train the ASL alphabet model using TensorFlow.
-3. [detect_asl.py](detect_asl.p): A live video stream application that detects the ASL alphabet letter displayed using the trained model.
+3. [detect_asl.py](detect_asl.py): A live video stream application that detects the ASL alphabet letter displayed using the trained model.
 
 ## Neural Network Architecture Overview
 
