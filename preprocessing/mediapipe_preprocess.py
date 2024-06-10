@@ -99,7 +99,6 @@ def process_directory(directory):
     return deleted_count, total_files_remaining
 
 # List of directories containing images to be processed
-# directories = ['/mnt/mydisk/asl33/blank2/Test_Alphabet', '/mnt/mydisk/asl33/blank2/Train_Alphabet']
 directories = [val_dir, train_dir]
 total_deleted = {}  # Dictionary to store total deleted files in each subdirectory
 grand_total_files_remaining = 0  # Variable to store total remaining files after processing
