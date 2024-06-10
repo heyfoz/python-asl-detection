@@ -87,20 +87,20 @@ Or to view the last 10 lines of the nohup.out file:
 tail -n 10 nohup.out
 ```
 
-With this data preprocessing approach, I was able to achieve 96% validation accuracy in 4 hours of training (10 epochs). Note that these results were achieved using a deprecated ImageDataGenerator for image augmentation, but the same image preprocessing and configurations can be applied.
+With this data preprocessing approach, I was able to achieve 96% validation accuracy in 4 hours of training (10 epochs). Note that these results were achieved using a deprecated ImageDataGenerator for image augmentation, but the same image preprocessing and configurations can be applied. The following data 
 
 | Epoch | Accuracy | Loss   | Val_Accuracy | Val_Loss |
 |-------|----------|--------|--------------|----------|
-| 1     | 0.3991   | 2.0398 | 0.8337       | 0.6126   |
-| 2     | 0.7804   | 0.7374 | 0.9021       | 0.3501   |
-| 3     | 0.8535   | 0.5157 | 0.9179       | 0.2564   |
-| 4     | 0.8854   | 0.3921 | 0.9347       | 0.2191   |
-| 5     | 0.9001   | 0.3505 | 0.9442       | 0.1947   |
-| 6     | 0.9194   | 0.2975 | 0.9505       | 0.1753   |
-| 7     | 0.9267   | 0.2744 | 0.9600       | 0.1438   |
-| 8     | 0.9314   | 0.2576 | 0.9653       | 0.1350   |
-| 9     | 0.9386   | 0.2310 | 0.9674       | 0.1317   |
-| 10    | 0.9396   | 0.2132 | 0.9642       | 0.1159   |
+| 1     | 0.7746   | 0.8365 | 0.9477       | 0.2380   |
+| 2     | 0.9125   | 0.3420 | 0.9574       | 0.1841   |
+| 3     | 0.9372   | 0.2506 | 0.9646       | 0.1679   |
+| 4     | 0.9476   | 0.2028 | 0.9636       | 0.1638   |
+| 5     | 0.9565   | 0.1655 | 0.9682       | 0.1620   |
+| 6     | 0.9630   | 0.1420 | 0.9703       | 0.1523   |
+| 7     | 0.9657   | 0.1315 | 0.9718       | 0.1455   |
+| 8     | 0.9678   | 0.1166 | 0.9713       | 0.1469   |
+| 9     | 0.9711   | 0.1044 | 0.9703       | 0.1503   |
+| 10    | 0.9742   | 0.0910 | 0.9728       | 0.1410   |
 
 ## Model Learning Curves
 
