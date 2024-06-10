@@ -7,9 +7,9 @@ https://github.com/ffm5113/python-asl-detection/blob/main/misc/ASL%20N%20Detecti
 
 This project involves training a keras image recognition model to predict American Sign Language (ASL) letters displayed via a video stream. The project consists of three main components:
 
-1. `mediapipe_preprocess.py`: A script to preprocess images to have a black background, hand centered on the screen in a consistent format.
-2. `train_asl.py`: A script to train the ASL alphabet model using TensorFlow.
-3. `detect_asl.py`: A live video stream application that detects the ASL alphabet letter displayed using the trained model.
+1. [mediapipe_preprocess.py](/preprocessing/mediapip_preprocess.py): A script to preprocess images to have a black background, hand centered on the screen in a consistent format.
+2. [train_asl.py](train_asl.py): A script to train the ASL alphabet model using TensorFlow.
+3. [detect_asl.py](detect_asl.p): A live video stream application that detects the ASL alphabet letter displayed using the trained model.
 
 ## Neural Network Architecture Overview
 
@@ -64,14 +64,14 @@ The dataset of ASL images is taken from the [Synthetic ASL Alphabet](https://www
 You can download the dataset and move the images in the respective subdirectories under 'Training' and 'Test' (for validation).
 
 ### Preprocessing
-To preprocess images using MediaPipe, run the following command:
+To preprocess images using MediaPipe, run the following command in the preprocessing directory:
 
 ```bash
 python mediapipe_preprocess.py
 ```
 
 ### Training
-To train the ASL alphabet model, run the following command:
+To train the ASL alphabet model, run the following command in the project directory:
 ```bash
 nohup python train_asl.py &
 ```
@@ -101,13 +101,13 @@ With this data preprocessing approach, I was able to achieve 96% validation accu
 | 10    | 0.9396   | 0.2132 | 0.9642       | 0.1159   |
 
 ## Detecting ASL Alphabet Letters
-To start the live video stream application and detect ASL alphabet letters, run the following command:
+To start the live video stream application and detect ASL alphabet letters, run the following command from the project directory:
 ```bash
 python detect_asl.py
 ```
 
 ## Video Demonstration
-Watch a demonstration of the ASL detection system in action on LinkedIn: [ASL Detection Demonstration](https://www.linkedin.com/posts/moulinf_ai-artificialintelligence-data-activity-7150833680297406465-A43y?utm_source=share&utm_medium=member_desktop)
+Watch a demonstration of the ASL detection system v1 in action on LinkedIn: [ASL Detection Demonstration](https://www.linkedin.com/posts/moulinf_ai-artificialintelligence-data-activity-7150833680297406465-A43y?utm_source=share&utm_medium=member_desktop)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
