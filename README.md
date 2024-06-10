@@ -63,7 +63,7 @@ This architecture is trained using a combination of training and validation data
    ```
 
 ## Dataset
-The dataset of ASL images was taken from the [Synthetic ASL Alphabet](https://www.kaggle.com/datasets/lexset/synthetic-asl-alphabet) dataset by Lexset. After mediapipe preprocessing and removal of unwanted images, the training involved 750 images per letter in training and 75 images per letter in validation. You can download the dataset and move the images in the respective subdirectories under 'training' and 'test' (for validation).
+The dataset of ASL images was taken from the [Synthetic ASL Alphabet](https://www.kaggle.com/datasets/lexset/synthetic-asl-alphabet) dataset by Lexset. After mediapipe preprocessing and removal of unwanted images, the model learned from 750 images per letter in training and used 75 images per letter in validation. You can download the dataset and move the images in the respective subdirectories under 'training' and 'test' (renamed validation in this project).
 
 ### Preprocessing
 To preprocess images using MediaPipe, run the following command in the preprocessing directory:
