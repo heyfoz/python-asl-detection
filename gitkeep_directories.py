@@ -1,3 +1,4 @@
+# Optional script to add git keep file in the sub directories so they are pushed to repo even if empty.
 import os
 
 def create_gitkeep_in_empty_dirs(parent_dir):
