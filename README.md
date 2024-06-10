@@ -87,7 +87,7 @@ Or to view the last 10 lines of the nohup.out file:
 tail -n 10 nohup.out
 ```
 
-With this data preprocessing approach, I was able to achieve 96% validation accuracy in 4 hours of training (10 epochs). Note that these results were achieved using a deprecated ImageDataGenerator for image augmentation, but the same image preprocessing and configurations can be applied. The following data 
+Using this data preprocessing approach, over 97% validation accuracy and a loss value under .15 were achieved by the end of training. 
 
 | Epoch | Accuracy | Loss   | Val_Accuracy | Val_Loss |
 |-------|----------|--------|--------------|----------|
