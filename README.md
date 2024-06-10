@@ -122,7 +122,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Conclusion
 
-In this project, we developed an intermediate ASL alphabet detection and classification system using TensorFlow. Through training and validation processes, the model achieved promising results, as demonstrated by the high validation accuracy of 97%. The architecture of the neural network, along with the incorporation of data augmentation techniques and model checkpoints, contributed to enhancing model generalization and performance.
+In this project, we developed an intermediate ASL alphabet detection and classification system using TensorFlow. Through training and validation processes, the model achieved promising results, as demonstrated by the high validation accuracy up to 97%. The architecture of the neural network, along with the incorporation of data augmentation techniques and model checkpoints, contributed to enhancing model generalization and performance.
 
 The automated visualizations, including the plotted graph of learning curves, offer valuable insights into the training progress and performance metrics. These visualizations aid in understanding the model's behavior, identifying potential areas for improvement, and making informed decisions during the training process.
 
