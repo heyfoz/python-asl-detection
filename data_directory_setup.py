@@ -1,3 +1,7 @@
+# This is an automated example of how to manually create training and validation directories within the current direct
+# with subdirectories A-Z also created in both trainind and validation 
+
+# Note: This is not needed if usilizing a dataset with directories already created, but for this project, only classes A-Z were used.
 import os
 import string
 
