@@ -1,4 +1,4 @@
-Example terminal output:
+Example terminal output from TensorFlow Training:
 
 024-06-10 16:00:26.735441: I external/local_tsl/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
 2024-06-10 16:00:26.804783: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
