@@ -1,4 +1,5 @@
-# Utility to reduce number of validation image files to a target number of images, randomly deleting the rest
+# Utility to reduce number of validation image files to a target number of images
+# In this case images are randomly deleted until target of 80 is reached
 import os
 import glob
 import random
