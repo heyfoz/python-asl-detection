@@ -5,14 +5,14 @@
 # while also keeping track of the number of deleted files. 
 # The final count of remaining files is displayed after processing.
 
-import cv2 # For image processing such as reading, resizing, and manipulation
-import mediapipe as mp # For hand tracking
-import numpy as np # To use numerical operations
-import os # For file operations
+import cv2  # For image processing such as reading, resizing, and manipulation
+import mediapipe as mp  # For hand tracking
+import numpy as np  # To use numerical operations
+import os  # For file operations
+import imgaug.augmenters as iaa  # For image augmentation
 
 val_dir = '/path/to/validation/images'
 train_dir = '/path/to/training/images'
-
 # Initialize MediaPipe Hands
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(
@@ -21,15 +21,17 @@ hands = mp_hands.Hands(
     min_detection_confidence=0.05,
     min_tracking_confidence=0.5)
 
-def make_background_black_except_hands_and_center(image_path, target_size=(200, 200), occupy_percent=0.8):
+def process_image(image_path, target_size=(200, 200), occupy_percent=0.8, is_training=False):
     image = cv2.imread(image_path)  # Reading the image
     if image is None:  # Check if the image was loaded successfully
+        print(f"Failed to read image: {image_path}")
         return False
 
     image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Convert image to RGB format
     results = hands.process(image_rgb)  # Process image with MediaPipe Hands
 
-    if not results.multi_hand_landmarks: # Check if hands were detected in the image
+    if not results.multi_hand_landmarks:  # Check if hands were detected in the image
+        print(f"No hands detected in image: {image_path}")
         return False
 
     # Extract hand landmarks and create a binary mask for the hands
@@ -53,6 +55,7 @@ def make_background_black_except_hands_and_center(image_path, target_size=(200, 
     # Find bounding box around hands and resize to target size
     contours, _ = cv2.findContours(hand_mask_blurred, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     if not contours:
+        print(f"No contours found in image: {image_path}")
         return False
     x_min, x_max, y_min, y_max = width, 0, height, 0
     for cnt in contours:
@@ -71,47 +74,98 @@ def make_background_black_except_hands_and_center(image_path, target_size=(200, 
     y_offset = (target_size[1] - scaled_h) // 2
     centered_image[y_offset:y_offset + scaled_h, x_offset:x_offset + scaled_w] = resized_hand_area
 
-    # Save the processed image
+    # Apply custom augmentation only for training images
+    if is_training:
+        centered_image = augment_training_imgs(centered_image)
+
+    # Convert image to grayscale
+    grayscale_image = cv2.cvtColor(centered_image, cv2.COLOR_RGB2GRAY)
+
+    # Save the processed grayscale image with '_mediapiped' appended to the filename
     base_name, ext = os.path.splitext(image_path)
-    new_image_path = f"{base_name}_centered_scaled{ext}"
-    cv2.imwrite(new_image_path, centered_image)
-    return True
+    new_image_path = f"{base_name}_mediapiped{ext}"
+    if cv2.imwrite(new_image_path, grayscale_image):
+        print(f"Saved processed file: {new_image_path}")
+        print(f"Deleted original file: {image_path}")
+        os.remove(image_path)
+        return True
+    else:
+        print(f"Failed to save processed file: {new_image_path}")
+        return False
+
+def augment_training_imgs(image):
+    # Apply custom augmentation only for training images
+    transform = iaa.Sequential([
+        iaa.Affine(
+            scale=(0.95, 1.05),  # Random zoom
+            rotate=(-5, 5),  # Random rotation
+            # Translate after zooming and rotating
+            translate_percent={"x": (-0.1, 0.1), "y": (-0.1, 0.1)}  # Random shifts
+        )
+    ], random_order=True)  # Apply transformations in random order
+
+    augmented_image = transform.augment_image(image)
+    return augmented_image
 
 # Function to process all images in a directory
 def process_directory(directory):
     deleted_count = {}  # Store count of deleted files in each subdirectory
     total_files_remaining = 0  # Store total remaining files after processing
+    total_files_processed = 0  # Store total processed files
+    total_files_deleted = 0  # Store total deleted files
 
     for subdir, dirs, files in os.walk(directory):
         num_deleted_in_subdir = 0
         subdir_name = os.path.basename(subdir)
+        processed_files = 0  # Track the number of processed files
+        total_files = len(files)  # Total number of files in the subdirectory
+
+        print(f"Working on directory: {subdir_name}")
+
+        is_training = directory == train_dir  # Check if processing training directory
         for file in files:
-            if file.lower().endswith(('.png', '.jpg', '.jpeg')): # Check if file is an image
+            if file.lower().endswith(('.png', '.jpg', '.jpeg')):  # Check if file is an image
                 file_path = os.path.join(subdir, file)
-                if not make_background_black_except_hands_and_center(file_path):  # Process image
-                    os.remove(file_path)  # Remove image if processing fails
+                print(f"Processing file: {file_path}")
+                if not process_image(file_path, is_training=is_training):  # Process image and handle deletion
+                    os.remove(file_path)  # Remove image if no hands detected
                     num_deleted_in_subdir += 1
+                    print(f"Deleted file: {file_path}")
                 else:
                     total_files_remaining += 1
 
-        deleted_count[subdir_name] = num_deleted_in_subdir
+                processed_files += 1
+                print(f"Processed {processed_files}/{total_files} files in {subdir_name}")
 
-    return deleted_count, total_files_remaining
+        deleted_count[subdir_name] = num_deleted_in_subdir
+        total_files_processed += total_files
+        total_files_deleted += num_deleted_in_subdir
+
+    return deleted_count, total_files_remaining, total_files_processed, total_files_deleted
 
 # List of directories containing images to be processed
 directories = [val_dir, train_dir]
-total_deleted = {}  # Dictionary to store total deleted files in each subdirectory
-grand_total_files_remaining = 0  # Variable to store total remaining files after processing
+total_deleted = {}
+
+# Dictionary to store total deleted files in each subdirectory
+grand_total_files_remaining = 0  
+grand_total_files_processed = 0  
+grand_total_files_deleted = 0  
 
 # Process each directory and accumulate results
 for directory in directories:
-    deleted_count, total_files_remaining = process_directory(directory)
+    deleted_count, total_files_remaining, total_files_processed, total_files_deleted = process_directory(directory)
     total_deleted.update(deleted_count)
     grand_total_files_remaining += total_files_remaining
+    grand_total_files_processed += total_files_processed
+    grand_total_files_deleted += total_files_deleted
 
 # Print results
 for subdir, count in total_deleted.items():
     print(f"{subdir}: {count} deleted")
 
+print(f"Total number of files processed: {grand_total_files_processed}")
+print(f"Total number of files deleted: {grand_total_files_deleted}")
 print(f"Total number of files remaining: {grand_total_files_remaining}")
-hands.close() # Close MediaPipe Hands
+
+hands.close()  # Close MediaPipe Hands
