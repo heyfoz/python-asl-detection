@@ -13,6 +13,7 @@ import imgaug.augmenters as iaa  # For image augmentation
 
 val_dir = '/path/to/validation/images'
 train_dir = '/path/to/training/images'
+
 # Initialize MediaPipe Hands
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(
