@@ -22,6 +22,21 @@ hands = mp_hands.Hands(
     min_detection_confidence=0.05,
     min_tracking_confidence=0.5)
 
+# Optional function to agument images
+def augment_training_imgs(image):
+    # Apply custom augmentation only for training images
+    transform = iaa.Sequential([
+        iaa.Affine(
+            #scale=(0.95, 1.05),  # Random zoom
+            rotate=(-5, 5),  # Random rotation
+            # Translate after zooming and rotating
+            #translate_percent={"x": (-0.1, 0.1), "y": (-0.1, 0.1)}  # Random shifts
+        )
+    ], random_order=True)  # Apply transformations in random order
+
+    augmented_image = transform.augment_image(image)
+    return augmented_image
+
 def process_image(image_path, target_size=(200, 200), occupy_percent=0.8, is_training=False):
     image = cv2.imread(image_path)  # Reading the image
     if image is None:  # Check if the image was loaded successfully
@@ -75,16 +90,16 @@ def process_image(image_path, target_size=(200, 200), occupy_percent=0.8, is_tra
     y_offset = (target_size[1] - scaled_h) // 2
     centered_image[y_offset:y_offset + scaled_h, x_offset:x_offset + scaled_w] = resized_hand_area
 
-    # Apply custom augmentation only for training images
-    if is_training:
-        centered_image = augment_training_imgs(centered_image)
+    # Optional  custom augmentation only for training images
+    # if is_training:
+    #     centered_image = augment_training_imgs(centered_image)
 
     # Convert image to grayscale
     grayscale_image = cv2.cvtColor(centered_image, cv2.COLOR_RGB2GRAY)
 
     # Save the processed grayscale image with '_mediapiped' appended to the filename
     base_name, ext = os.path.splitext(image_path)
-    new_image_path = f"{base_name}_mediapiped{ext}"
+    new_image_path = f"{base_name}_mediapipe{ext}"
     if cv2.imwrite(new_image_path, grayscale_image):
         print(f"Saved processed file: {new_image_path}")
         print(f"Deleted original file: {image_path}")
@@ -93,21 +108,6 @@ def process_image(image_path, target_size=(200, 200), occupy_percent=0.8, is_tra
     else:
         print(f"Failed to save processed file: {new_image_path}")
         return False
-
-def augment_training_imgs(image):
-    # Apply custom augmentation only for training images
-    transform = iaa.Sequential([
-        iaa.Affine(
-            scale=(0.95, 1.05),  # Random zoom
-            rotate=(-5, 5),  # Random rotation
-            # Translate after zooming and rotating
-            translate_percent={"x": (-0.1, 0.1), "y": (-0.1, 0.1)}  # Random shifts
-        )
-    ], random_order=True)  # Apply transformations in random order
-
-    augmented_image = transform.augment_image(image)
-    return augmented_image
-
 # Function to process all images in a directory
 def process_directory(directory):
     deleted_count = {}  # Store count of deleted files in each subdirectory
