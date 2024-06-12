@@ -4,14 +4,21 @@
 import cv2  # For image processing such as reading, resizing, and manipulation
 import imgaug.augmenters as iaa  # For image augmentation
 import matplotlib.pyplot as plt  # For plotting images
+import os  # For file operations
 import tkinter as tk  # For creating the UI
 from PIL import ImageTk, Image  # For displaying images in the UI
 import mediapipe as mp  # For hand tracking
 import numpy as np  # To use numerical operations
 
+# Global variables for augmentation parameters
 image_path = '/path/to/test/image.png'  # Replace this with the path to your image ('C:\\path\\to\\test\\image.png for Windows)
+rotation_range = (-5, 5)
+zoom_range = (0.9, 1.1)
+shear_range = (-0.5, 0.5)
+x_shift_range = (-0.05, 0.05)
+y_shift_range = (-0.05, 0.05)
 
-# Function to process a single image with random augmentation
+# Function to process a single image with user-defined augmentation parameters
 def process_single_image(image_path, target_size=(200, 200), occupy_percent=0.8):
     global img_label
 
@@ -77,13 +84,13 @@ def process_single_image(image_path, target_size=(200, 200), occupy_percent=0.8)
     y_offset = (target_size[1] - scaled_h) // 2
     centered_image[y_offset:y_offset + scaled_h, x_offset:x_offset + scaled_w] = resized_hand_area
 
-    # Apply custom augmentation
+    # Apply custom augmentation based on user-defined parameters
     transform = iaa.Sequential([
-        iaa.Rotate((-5, 5)),  # Random rotation
+        iaa.Rotate(rotation_range),  # Random rotation
         iaa.Affine(
-            #scale=(0.9, 1.1),  # Random zoom
-            #shear=(-.5, .5),  # Random shear
-            #translate_percent={"x": (-0.05, 0.05), "y": (-0.05, 0.05)}  # Random shifts
+            scale=zoom_range,  # Random zoom
+            shear=shear_range,  # Random shear
+            translate_percent={"x": x_shift_range, "y": y_shift_range}  # Random shifts
         )
     ], random_order=True)  # Apply transformations in random order
     augmented_image = transform.augment_image(centered_image)
@@ -112,12 +119,20 @@ def on_button_click():
     global current_image_path
     process_single_image(current_image_path)
 
+# Function to update augmentation parameters based on user input
+def update_parameters():
+    global rotation_range, zoom_range, shear_range, x_shift_range, y_shift_range
+    rotation_range = (float(entry_rotation_min.get()), float(entry_rotation_max.get()))
+    zoom_range = (float(entry_zoom_min.get()), float(entry_zoom_max.get()))
+    shear_range = (float(entry_shear_min.get()), float(entry_shear_max.get()))
+    x_shift_range = (float(entry_x_shift_min.get()), float(entry_x_shift_max.get()))
+    y_shift_range = (float(entry_y_shift_min.get()), float(entry_y_shift_max.get()))
+
 # Create a Tkinter window
 root = tk.Tk()
 root.title("Image Augmentation")
 
 # Load an example image
-current_image_path = image_path
 image = Image.open(current_image_path)
 image_tk = ImageTk.PhotoImage(image)
 
@@ -125,9 +140,53 @@ image_tk = ImageTk.PhotoImage(image)
 img_label = tk.Label(root, image=image_tk)
 img_label.pack()
 
-# Create a button to trigger augmentation
+# Create entry fields for augmentation parameters
+tk.Label(root, text="Rotation Range (min, max):").pack()
+entry_rotation_min = tk.Entry(root)
+entry_rotation_min.pack()
+entry_rotation_min.insert(0, str(rotation_range[0]))
+entry_rotation_max = tk.Entry(root)
+entry_rotation_max.pack()
+entry_rotation_max.insert(0, str(rotation_range[1]))
+
+tk.Label(root, text="Zoom Range (min, max):").pack()
+entry_zoom_min = tk.Entry(root)
+entry_zoom_min.pack()
+entry_zoom_min.insert(0, str(zoom_range[0]))
+entry_zoom_max = tk.Entry(root)
+entry_zoom_max.pack()
+entry_zoom_max.insert(0, str(zoom_range[1]))
+
+tk.Label(root, text="Shear Range (min, max):").pack()
+entry_shear_min = tk.Entry(root)
+entry_shear_min.pack()
+entry_shear_min.insert(0, str(shear_range[0]))
+entry_shear_max = tk.Entry(root)
+entry_shear_max.pack()
+entry_shear_max.insert(0, str(shear_range[1]))
+
+tk.Label(root, text="X Shift Range (min, max):").pack()
+entry_x_shift_min = tk.Entry(root)
+entry_x_shift_min.pack()
+entry_x_shift_min.insert(0, str(x_shift_range[0]))
+entry_x_shift_max = tk.Entry(root)
+entry_x_shift_max.pack()
+entry_x_shift_max.insert(0, str(x_shift_range[1]))
+
+tk.Label(root, text="Y Shift Range (min, max):").pack()
+entry_y_shift_min = tk.Entry(root)
+entry_y_shift_min.pack()
+entry_y_shift_min.insert(0, str(y_shift_range[0]))
+entry_y_shift_max = tk.Entry(root)
+entry_y_shift_max.pack()
+entry_y_shift_max.insert(0, str(y_shift_range[1]))
+
+# Create a button to update parameters and trigger augmentation
+btn_update = tk.Button(root, text="Update Parameters", command=update_parameters)
+btn_update.pack()
+
 btn_augment = tk.Button(root, text="Apply Augmentation", command=on_button_click)
 btn_augment.pack()
 
-# Run the Tkinter event loop
+# Start the Tkinter main loop
 root.mainloop()
