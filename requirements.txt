@@ -1,6 +1,6 @@
 python==3.9.*
 tensorflow==2.15.0
 mediapipe==0.10.9
-imaug==0.4.0
+imgaug==0.4.0
 opencv-python==4.5.3.*
 pandas==2.2.2
