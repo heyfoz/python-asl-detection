@@ -47,6 +47,7 @@ This architecture utilizes a combination of training and validation datasets, wi
 - MediaPipe 0.10.9 - detecting and cropping hands
 - MatPlotLib 3.9.0 - plotting training history values
 - Pandas 2.2.2 - formatting plots history table
+- ImgAug 0.4.0 - custom image augmentation
 
 ### Installation
 
