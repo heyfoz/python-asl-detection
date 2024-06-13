@@ -35,7 +35,7 @@ This architecture utilizes a combination of training and validation datasets, wi
 - [training](training): Directory containing subdirectories `A` through `Z`, where training images will be stored.
 - [validation](/validation): Directory containing subdirectories `A` through `Z`, where validation images will be stored.
 - [preprocessing](/preprocessing): Directory containing preprocessing files used to manipulate data before training.
-- [misc](/misc): Directory cointaining misc utility files and a training terminal output example. 
+- [misc](/misc): Directory containing misc utility files and a training terminal output example. 
 
 ## Getting Started
 
@@ -120,6 +120,40 @@ Watch a demonstration of the ASL detection system v1 in action on LinkedIn: [ASL
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Collaboration
+
+If you're interested in contributing to this project, follow these steps:
+
+1. **Fork the Repository**: Start by forking this repository to your own GitHub account. You can do this by clicking the "Fork" button at the top right of the repository page.
+
+2. **Clone the Forked Repository**: Clone the forked repository to your local machine using the following command:
+
+    ```
+    git clone https://github.com/your-username/your-forked-repo.git
+    ```
+
+3. **Create a New Branch**: Create a new branch for your changes:
+
+    ```
+    git checkout -b feature/my-awesome-feature
+    ```
+
+4. **Make Your Changes**: Make the necessary changes or improvements to the codebase.
+
+5. **Commit and Push**: Commit your changes and push them to your forked repository:
+
+    ```
+    git add .
+    git commit -m "Add my awesome feature"
+    git push origin feature/my-awesome-feature
+    ```
+
+6. **Submit a Pull Request**: Go to the original repository and create a pull request from your forked branch. Describe your changes and why they're valuable.
+
+7. **Review and Collaborate**: The maintainers will review your pull request. Collaborate with them to address any feedback or suggestions.
+
+Let's build an inclusive and supportive open-source community together!
 
 ## Conclusion
 
