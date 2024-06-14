@@ -4,7 +4,7 @@
   <img src="/misc/ASL N Detection.png" alt="ASL Letter N Detected">
 </p>
 
-This project involves training a keras image recognition model to predict American Sign Language (ASL) letters displayed via a video stream. The project consists of three main components:
+This project involves training a keras image recognition model via supervised learning to predict American Sign Language (ASL) letters displayed via snapshots of a video stream. The project consists of three main components:
 
 1. [mediapipe_preprocess.py](/preprocessing/mediapipe_preprocess.py): A script to preprocess images to have a black background, hand centered on the screen in a consistent format.
 2. [train_asl.py](train_asl.py): A script to train the ASL alphabet model using TensorFlow.
