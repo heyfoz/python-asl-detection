@@ -42,7 +42,7 @@ This architecture utilizes a combination of training and validation datasets, wi
 ### Prerequisites
 
 - Python 3.9.x - core programming language
-- TensorFlow 2.15.0 - deep learning framework
+- TensorFlow 2.16.0 - deep learning framework
 - OpenCV (CV2) 4.9.2 - computer vision library
 - MediaPipe 0.10.9 - detecting and cropping hands
 - MatPlotLib 3.9.0 - plotting training history values
