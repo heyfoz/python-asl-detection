@@ -1,4 +1,5 @@
-# SignWave AI: ASL Detection and TensorFlow Image Classification Model Training Project
+# SignWave AI: ASL Detection and
+# TensorFlow Image Classification Model Training Project
 
 <p align="center">
   <img src="/misc/ASL N Detection.png" alt="ASL Letter N Detected">
