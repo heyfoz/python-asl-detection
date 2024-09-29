@@ -59,7 +59,7 @@ This architecture utilizes a combination of training and validation datasets, wi
 2. Clone the repository:
 
    ```bash
-   git clone https://github.com/ffm5113/python-asl-detection.git
+   git clone https://github.com/heyfoz/python-asl-detection.git
    cd python-asl-detection
    ```
 
